@@ -1,0 +1,14 @@
+@mixin font_color($text_color, $bg_color) {
+
+#b{
+	color: #f1f;
+}
+
+#t{
+  color: $text_color;
+  }
+}
+
+	@include font_color(black, #aaa);
+	@include font_color(grean, #aaa);
+	@include font_color(blue, #aaa);
