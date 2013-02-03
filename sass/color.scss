@@ -1,9 +1,7 @@
 @mixin color($name, $text, $bg) {
 	// общие стили для каждого цветовой раскладке
 
-	.d {
-		color:blue;
-	}
+
 
 
 	// уникальные стили для каждого цветовой раскладке
@@ -15,12 +13,4 @@
 			background-color: $bg;
 		}
 	}
-}
-
-body {
-	//гегенерируем стили для 4-х цветов
-	@include color(".c1", #ffffff, #000000);
-	@include color(".c2", #000000, #ffffff);
-	@include color(".c3", #063462, #9dd1ff);
-	@include color(".c4", #a9e44d, #3b2716);
 }
