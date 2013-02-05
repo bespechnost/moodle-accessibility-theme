@@ -2,46 +2,47 @@ $option_panel_height: 40px;
 $option_border_size: 3px;
 
 @mixin color($name, $text, $bg) {
-
   body#{$name} {
+    color: $text;
     background-color: $bg;
-  }
-
-  #{$name} .accessibility_panel {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: inherit;
-    width: 100%;
-    height: $option_panel_height;
-    .menu {
-      border-bottom: $option_border_size solid $text;
-      width: inherit;
-      height: inherit;
-    }
-    .settings {
-      &.min {
-        display:none;
-      }
-      a {
-        padding: 5px;
-        margin: 5px;
-        border: $option_border_size solid $text;
-      }
-      background: inherit;
-      padding: 20px;
-      border-bottom: $option_border_size solid $text;
+    a {
+      color: $text;
     }
   }
-
 }
 
 body {
   margin-top: $option_panel_height;
 }
 
+.accessibility_panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: inherit;
+  width: 100%;
+  height: $option_panel_height;
+  .menu {
+    border-bottom: $option_border_size solid;
+    width: inherit;
+    height: inherit;
+  }
+  .settings {
+    &.min {
+      display:none;
+    }
+    a {
+      padding: 5px;
+      margin: 5px;
+      border: $option_border_size solid;
+    }
+    background: inherit;
+    padding: 20px;
+    border-bottom: $option_border_size solid;
+  }
+}
+
 @include color("", #000000, #ffffff);
-@include color(".color0", #000000, #ffffff);
 @include color(".color1", #ffffff, #000000);
 @include color(".color2", #063462, #9dd1ff);
 @include color(".color3", #a9e44d, #3b2716);

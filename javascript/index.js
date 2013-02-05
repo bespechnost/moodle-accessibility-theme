@@ -21,16 +21,25 @@
                 '<a href="#" class="expand">Настройки</a>' +
                 '</div>' +
                 '<div class="settings min">' +
-                '<p>Цвет: <a href="#" class="color1">цвет1</a><a href="#" class="color2">цвет2</a><a href="#" class="color3">цвет3</a></p>' +
+                '<p>Цвет: ' +
+                '' +
+                '<a href="#" class="color0">цвет0</a>' +
+                '<a href="#" class="color1">цвет1</a>' +
+                '<a href="#" class="color2">цвет2</a>' +
+                '<a href="#" class="color3">цвет3</a>' +
+                '' +
+                '</p>' +
+                '' +
                 '</div>';
             document.body.appendChild(panel_div);
             this.$element = $(panel_div);
             this.$element.find('.expand').on('click', $.proxy(this.expand,this));
 
 
-            for (n in this.list_style) {
-                this.$element.find('.' + this.list_style[n]).on('click', $.proxy( this.set_color, this, this.list_style[n] ));
-            }
+            this.$element.find('.color0').on('click', $.proxy( this.set_color, this, '' ));
+            this.$element.find('.color1').on('click', $.proxy( this.set_color, this, 'color1' ));
+            this.$element.find('.color2').on('click', $.proxy( this.set_color, this, 'color2' ));
+            this.$element.find('.color3').on('click', $.proxy( this.set_color, this, 'color3' ));
 
             //$('body').addClass(this.list_style[1]);
         }
@@ -43,7 +52,9 @@
             for (n in this.list_style) {
                 $('body').removeClass( this.list_style[n] );
             }
-            $('body').addClass(color);
+            if (color !== '') {
+                $('body').addClass(color);
+            }
         }
 
     };
