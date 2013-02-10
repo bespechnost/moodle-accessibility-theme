@@ -1,10 +1,10 @@
 !function($) {
-
-
-
     var Panel = function(element, options) {
         this.$element = $(element);
-        this.list_style = ['color0','color1','color2','color3'];
+        this.list_style = ['color1','color2','color3'];
+        this.list_font_size = ['size1','size2'];
+        this.list_font_spacing = ['spacing1','spacing2'];
+        this.list_font_family = ['family1'];
         this.open = false;
         this.init();
     };
@@ -21,36 +21,73 @@
                 '<a href="#" class="expand">Настройки</a>' +
                 '</div>' +
                 '<div class="settings min">' +
+
                 '<p>Цвет: ' +
-                '' +
-                '<a href="#" class="color0">цвет0</a>' +
-                '<a href="#" class="color1">цвет1</a>' +
-                '<a href="#" class="color2">цвет2</a>' +
-                '<a href="#" class="color3">цвет3</a>' +
-                '' +
+                '<a href="#" class="set_color_0">цвет0</a>' +
+                '<a href="#" class="set_color_1">цвет1</a>' +
+                '<a href="#" class="set_color_2">цвет2</a>' +
+                '<a href="#" class="set_color_3">цвет3</a>' +
                 '</p>' +
-                '' +
+
+                '<p>Размер: ' +
+                '<a href="#" class="set_size_0">13</a>' +
+                '<a href="#" class="set_size_1">18</a>' +
+                '<a href="#" class="set_size_2">24</a>' +
+                '</p>' +
+
+                '<p>Межбуквенный интервал: ' +
+                '<a href="#" class="set_spacing_0">Стандартный</a>' +
+                '<a href="#" class="set_spacing_1">Средний</a>' +
+                '<a href="#" class="set_spacing_2">Большой</a>' +
+                '</p>' +
+
+                '<p>Имя шрифта: ' +
+                '<a href="#" class="set_font_family_0">Arial</a>' +
+                '<a href="#" class="set_font_family_1">Times New Roman</a>' +
+                '</p>' +
+
                 '</div>';
             document.body.appendChild(panel_div);
             this.$element = $(panel_div);
-            this.$element.find('.expand').on('click', $.proxy(this.expand,this));
+            this.$element.find('.menu').on('click', $.proxy(this.expand,this));
 
 
-            this.$element.find('.color0').on('click', $.proxy( this.set_color, this, '' ));
-            this.$element.find('.color1').on('click', $.proxy( this.set_color, this, 'color1' ));
-            this.$element.find('.color2').on('click', $.proxy( this.set_color, this, 'color2' ));
-            this.$element.find('.color3').on('click', $.proxy( this.set_color, this, 'color3' ));
+            this.$element.find('.set_color_0').on('click', $.proxy( this.set_param, this, '', this.list_style ));
+            this.$element.find('.set_color_1').on('click', $.proxy( this.set_param, this, 'color1', this.list_style ));
+            this.$element.find('.set_color_2').on('click', $.proxy( this.set_param, this, 'color2', this.list_style ));
+            this.$element.find('.set_color_3').on('click', $.proxy( this.set_param, this, 'color3', this.list_style ));
+
+            this.$element.find('.set_size_0').on('click', $.proxy( this.set_param, this, '', this.list_font_size ));
+            this.$element.find('.set_size_1').on('click', $.proxy( this.set_param, this, 'size1', this.list_font_size ));
+            this.$element.find('.set_size_2').on('click', $.proxy( this.set_param, this, 'size2', this.list_font_size ));
+
+            this.$element.find('.set_spacing_0').on('click', $.proxy( this.set_param, this, '', this.list_font_spacing ));
+            this.$element.find('.set_spacing_1').on('click', $.proxy( this.set_param, this, 'spacing1', this.list_font_spacing ));
+            this.$element.find('.set_spacing_2').on('click', $.proxy( this.set_param, this, 'spacing2', this.list_font_spacing ));
+
+            this.$element.find('.set_font_family_0').on('click', $.proxy( this.set_param, this, '', this.list_font_family ));
+            this.$element.find('.set_font_family_1').on('click', $.proxy( this.set_param, this, 'family1', this.list_font_family ));
 
             //$('body').addClass(this.list_style[1]);
         }
 
+        /**
+         * показать/скрыть настройки
+         *
+         */
         , expand : function () {
             this.$element.find('.settings').toggleClass('min');
         }
 
-        , set_color : function (color) {
-            for (n in this.list_style) {
-                $('body').removeClass( this.list_style[n] );
+        /**
+         * переключение класса в body
+         *
+         * @param {String} color название подключаемого класс, добавляемого в body
+         * @param {Array} list массив со всеми классами текущих настроек
+         */
+        , set_param : function (color,list) {
+            for (n in list) {
+                $('body').removeClass( list[n] );
             }
             if (color !== '') {
                 $('body').addClass(color);
@@ -58,9 +95,6 @@
         }
 
     };
-
-
-
 
     $.fn.panel = function (option) {
         return this.each(function () {
@@ -79,78 +113,4 @@
     $.fn.panel.Constructor = Panel
 }(window.jQuery);
 
-
-
 $(document).ready(function() { $(document).panel(); });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-(function( $ ){
-
-    var methods = {
-        init : function( options ) {
-            var panel = document.createElement("div");
-            panel.className = 'accessibility_panel min';
-            panel.innerHTML = '' +
-                '<div class="options">' +
-                '<a href="#" class="expand">Настройки</a>' +
-                '</div>' +
-                '<p>Шрифт: <a href="#">10</a><a href="#">12</a><a href="#">16</a></p>' +
-                '';
-            document.body.appendChild(panel);
-            $(this).on( "click", function() {alert(1)} )
-            $(".accessibility_panel .expand").on( "click", $.proxy( this.expand, this ) )
-
-        },
-
-        expand : function () {
-            alert(1111)
-        }
-    };
-
-    $.fn.panel = function( method ) {
-
-        // Method calling logic
-        if ( methods[method] ) {
-            return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
-        } else if ( typeof method === 'object' || ! method ) {
-            return methods.init.apply( this, arguments );
-        } else {
-            $.error( 'Method ' +  method + ' does not exist on jQuery.panel' );
-        }
-
-    };
-
-})( jQuery );
-
-// calls the init method
-$(document).ready(
-    function() {
-        $(document).panel();
-    }
-);
-
-
-
-    */

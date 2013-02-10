@@ -1,20 +1,45 @@
-$option_panel_height: 40px;
-$option_border_size: 3px;
+$option_panel_height: 40px; // высота меню
+$option_panel_width: 200px; // ширина меню
+$option_border_size: 3px; // толщина рамки
 
 @mixin color($name, $text, $bg) {
   body#{$name} {
     color: $text;
     background-color: $bg;
+
     a {
       color: $text;
     }
+
+  }
+}
+
+@mixin size($name, $size) {
+  body#{$name} {
+    font-size: $size;
+  }
+}
+
+@mixin font-spacing($name, $size) {
+  body#{$name} {
+    letter-spacing: $size;
+    word-spacing: $size;
+  }
+}
+
+@mixin font-family($name, $font) {
+  body#{$name} {
+    @if $font == "Arial" { font-family: Arial, Helvetica, sans-serif; }
+    @if $font == "Times New Roman" { font-family: 'Times New Roman', Times, serif; }
   }
 }
 
 body {
   margin-top: $option_panel_height;
+  height: auto;
 }
 
+// Панель
 .accessibility_panel {
   position: absolute;
   top: 0;
@@ -22,27 +47,53 @@ body {
   background-color: inherit;
   width: 100%;
   height: $option_panel_height;
+
   .menu {
-    border-bottom: $option_border_size solid;
-    width: inherit;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: $option_panel_width/-2;
+    border-style: solid;
+    border-width: 0 $option_border_size $option_border_size $option_border_size;
+    width: $option_panel_width;
     height: inherit;
   }
+
   .settings {
+    background: inherit;
+    padding: $option_panel_height+20px 20px 20px 20px;
+    border-bottom: $option_border_size solid;
+
     &.min {
-      display:none;
+      display: none;
     }
+
     a {
       padding: 5px;
       margin: 5px;
       border: $option_border_size solid;
     }
-    background: inherit;
-    padding: 20px;
-    border-bottom: $option_border_size solid;
+
   }
+
 }
 
+// Изменение цветов.
 @include color("", #000000, #ffffff);
 @include color(".color1", #ffffff, #000000);
 @include color(".color2", #063462, #9dd1ff);
 @include color(".color3", #a9e44d, #3b2716);
+
+// Изменение размера шрифта.
+@include size("", 13px);
+@include size(".size1", 18px);
+@include size(".size2", 24px);
+
+// Изменение межбуквенного интервала.
+@include font-spacing("", 0px);
+@include font-spacing(".spacing1", 2px);
+@include font-spacing(".spacing2", 5px);
+
+// Изменение типа шрифта.
+@include font-family("", "Arial");
+@include font-family(".family1", "Times New Roman");
