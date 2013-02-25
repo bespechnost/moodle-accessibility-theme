@@ -34,6 +34,10 @@ $option_border_size: 3px; // толщина рамки
   }
 }
 
+html {
+  height: 100%;
+}
+
 body {
   margin-top: $option_panel_height;
   height: auto;
