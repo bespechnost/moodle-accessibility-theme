@@ -35,33 +35,34 @@
             panel_div.className = 'accessibility_panel';
             panel_div.innerHTML = '' +
                 '<div class="menu">' +
-                '<a href="#" class="expand">Настройки</a>' +
+                    '<div class="icon"></div>' +
                 '</div>' +
+
                 '<div class="settings min">' +
 
-                '<p>Цвет: ' +
-                '<a href="#" class="set_color_0">цвет0</a>' +
-                '<a href="#" class="set_color_1">цвет1</a>' +
-                '<a href="#" class="set_color_2">цвет2</a>' +
-                '<a href="#" class="set_color_3">цвет3</a>' +
-                '</p>' +
+                    '<p class="size">' +
+                    '<a href="#" class="set_size_0">A</a>' +
+                    '<a href="#" class="set_size_1">A</a>' +
+                    '<a href="#" class="set_size_2">A</a>' +
+                    '</p>' +
 
-                '<p>Размер: ' +
-                '<a href="#" class="set_size_0">13</a>' +
-                '<a href="#" class="set_size_1">18</a>' +
-                '<a href="#" class="set_size_2">24</a>' +
-                '</p>' +
+                    '<p class="color">' +
+                        '<a href="#" class="set_color_0"></a>' +
+                        '<a href="#" class="set_color_1"></a>' +
+                        '<a href="#" class="set_color_2"></a>' +
+                        '<a href="#" class="set_color_3"></a>' +
+                    '</p>' +
 
-                '<p>Межбуквенный интервал: ' +
-                '<a href="#" class="set_spacing_0">Стандартный</a>' +
-                '<a href="#" class="set_spacing_1">Средний</a>' +
-                '<a href="#" class="set_spacing_2">Большой</a>' +
-                '</p>' +
+                    '<p class="font_family">' +
+                        '<a href="#" class="set_font_family_0">Arial</a>' +
+                        '<a href="#" class="set_font_family_1">Times New Roman</a>' +
+                    '</p>' +
 
-                '<p>Имя шрифта: ' +
-                '<a href="#" class="set_font_family_0">Arial</a>' +
-                '<a href="#" class="set_font_family_1">Times New Roman</a>' +
-                '</p>' +
+                    '<p class="spacing">Межбуквенный интервал: ' +
+                        '<a href="#" class="set_spacing_0">Стандартный</a>' +
+                        '<a href="#" class="set_spacing_1">Средний</a>' +
+                        '<a href="#" class="set_spacing_2">Большой</a>' +
+                    '</p>' +
 
                 '</div>';
 
@@ -69,16 +70,16 @@
             this.$element = $(panel_div);
             this.$element.find('.menu').on('click', $.proxy(this.expand,this));
 
+            // навешивание события на кнопки настройки размера шрифта
+            this.$element.find('.set_size_0').on('click', $.proxy( this.set_param, this, 'size', '' ));
+            this.$element.find('.set_size_1').on('click', $.proxy( this.set_param, this, 'size', 'size1' ));
+            this.$element.find('.set_size_2').on('click', $.proxy( this.set_param, this, 'size', 'size2' ));
+
             // навешивание события на кнопки настройки цвета
             this.$element.find('.set_color_0').on('click', $.proxy( this.set_param, this, 'color', '' ));
             this.$element.find('.set_color_1').on('click', $.proxy( this.set_param, this, 'color', 'color1' ));
             this.$element.find('.set_color_2').on('click', $.proxy( this.set_param, this, 'color', 'color2' ));
             this.$element.find('.set_color_3').on('click', $.proxy( this.set_param, this, 'color', 'color3' ));
-
-            // навешивание события на кнопки настройки размера шрифта
-            this.$element.find('.set_size_0').on('click', $.proxy( this.set_param, this, 'size', '' ));
-            this.$element.find('.set_size_1').on('click', $.proxy( this.set_param, this, 'size', 'size1' ));
-            this.$element.find('.set_size_2').on('click', $.proxy( this.set_param, this, 'size', 'size2' ));
 
             // навешивание события на кнопки настройки межбуквенного интервала
             this.$element.find('.set_spacing_0').on('click', $.proxy( this.set_param, this, 'spacing', '' ));
@@ -86,8 +87,8 @@
             this.$element.find('.set_spacing_2').on('click', $.proxy( this.set_param, this, 'spacing', 'spacing2' ));
 
             // навешивание события на кнопки настройки типа шрифта
-            this.$element.find('.set_font_family_0').on('click', $.proxy( this.set_param, 'font_family', this, '' ));
-            this.$element.find('.set_font_family_1').on('click', $.proxy( this.set_param, 'font_family', this, 'family1' ));
+            this.$element.find('.set_font_family_0').on('click', $.proxy( this.set_param, this, 'font_family', '' ));
+            this.$element.find('.set_font_family_1').on('click', $.proxy( this.set_param, this, 'font_family', 'family1' ));
 
             // применяем настроек из cookie
             var params = ['color','size','spacing','font_family'];

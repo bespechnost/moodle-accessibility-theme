@@ -2,7 +2,7 @@ html {
   height: 100%; }
 
 body {
-  margin-top: 40px;
+  margin-top: 68px;
   height: auto; }
 
 .accessibility_panel {
@@ -11,50 +11,195 @@ body {
   left: 0;
   background-color: inherit;
   width: 100%;
-  height: 40px; }
+  height: 68px; }
   .accessibility_panel .menu {
     position: absolute;
     top: 0;
     left: 50%;
-    margin-left: -100px;
+    margin-left: -54px;
     border-style: solid;
     border-width: 0 3px 3px 3px;
-    width: 200px;
-    height: inherit; }
+    border-radius: 0 0 5px 5px;
+    width: 108px;
+    height: inherit;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    letter-spacing: 0;
+    word-spacing: 0;
+    cursor: pointer; }
+    .accessibility_panel .menu .icon {
+      width: 88px;
+      height: 48px;
+      margin: 10px;
+      background-image: url([[pix:theme|settings_icon]]);
+      background-repeat: no-repeat; }
+      .color1 .accessibility_panel .menu .icon {
+        background-position: 0 -48px; }
+      .color2 .accessibility_panel .menu .icon {
+        background-position: 0 -96px; }
+      .color3 .accessibility_panel .menu .icon {
+        background-position: 0 -144px; }
   .accessibility_panel .settings {
     background: inherit;
-    padding: 60px 20px 20px 20px;
-    border-bottom: 3px solid; }
+    padding: 98px 20px 20px 20px;
+    border-bottom: 3px solid;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    letter-spacing: 0;
+    word-spacing: 0;
+    /*    a {
+          padding: 5px;
+          margin: 5px;
+          border: $option_border_size solid;
+        }*/ }
     .accessibility_panel .settings.min {
       display: none; }
-    .accessibility_panel .settings a {
-      padding: 5px;
-      margin: 5px;
-      border: 3px solid; }
+    .accessibility_panel .settings .size, .accessibility_panel .settings .color, .accessibility_panel .settings .font_family {
+      display: inline-block;
+      margin-right: 40px; }
+    .accessibility_panel .settings .set_size_0, .accessibility_panel .settings .set_size_1, .accessibility_panel .settings .set_size_2 {
+      font-family: Arial !important;
+      font-weight: bold;
+      margin: 0 10px;
+      text-decoration: none; }
+    .accessibility_panel .settings .set_size_0 {
+      font-size: 31.2px; }
+    .accessibility_panel .settings .set_size_1 {
+      font-size: 41.6px; }
+    .accessibility_panel .settings .set_size_2 {
+      font-size: 52px; }
+    .accessibility_panel .settings .set_color_0, .accessibility_panel .settings .set_color_1, .accessibility_panel .settings .set_color_2, .accessibility_panel .settings .set_color_3 {
+      display: inline-block;
+      border: 5px solid;
+      border-radius: 38px;
+      width: 38px;
+      height: 38px;
+      margin: 0 10px; }
+    .accessibility_panel .settings .set_color_0 {
+      border-color: #000000;
+      background-color: #FFFFFF; }
+    .accessibility_panel .settings .set_color_1 {
+      border-color: #FFFFFF;
+      background-color: #000000; }
+    .accessibility_panel .settings .set_color_2 {
+      border-color: #063462;
+      background-color: #9dd1ff; }
+    .accessibility_panel .settings .set_color_3 {
+      border-color: #a9e44d;
+      background-color: #3b2716; }
+    .accessibility_panel .settings .set_font_family_0, .accessibility_panel .settings .set_font_family_1 {
+      font-size: 28px;
+      margin: 0 10px; }
+    .accessibility_panel .settings .set_spacing_0, .accessibility_panel .settings .set_spacing_1, .accessibility_panel .settings .set_spacing_2 {
+      margin: 0 10px; }
 
 body {
   color: black;
   background-color: white; }
   body a {
     color: black; }
+  body input, body select, body textarea {
+    color: black;
+    border: black 2px solid;
+    padding: 5px;
+    background-color: white; }
+    body input.moveto, body select.moveto, body textarea.moveto {
+      border: none;
+      padding: 0; }
+  body #dock {
+    color: black;
+    border: black 2px solid;
+    border-top: none;
+    background-color: white; }
+    body #dock .dockedtitle {
+      border-color: black; }
+    body #dock .dockeditempanel_hd {
+      border-color: black; }
+    body #dock .dockeditempanel_content {
+      color: black;
+      border: black 2px solid;
+      background-color: white; }
 
 body.color1 {
   color: white;
   background-color: black; }
   body.color1 a {
     color: white; }
+  body.color1 input, body.color1 select, body.color1 textarea {
+    color: white;
+    border: white 2px solid;
+    padding: 5px;
+    background-color: black; }
+    body.color1 input.moveto, body.color1 select.moveto, body.color1 textarea.moveto {
+      border: none;
+      padding: 0; }
+  body.color1 #dock {
+    color: white;
+    border: white 2px solid;
+    border-top: none;
+    background-color: black; }
+    body.color1 #dock .dockedtitle {
+      border-color: white; }
+    body.color1 #dock .dockeditempanel_hd {
+      border-color: white; }
+    body.color1 #dock .dockeditempanel_content {
+      color: white;
+      border: white 2px solid;
+      background-color: black; }
 
 body.color2 {
   color: #063462;
   background-color: #9dd1ff; }
   body.color2 a {
     color: #063462; }
+  body.color2 input, body.color2 select, body.color2 textarea {
+    color: #063462;
+    border: #063462 2px solid;
+    padding: 5px;
+    background-color: #9dd1ff; }
+    body.color2 input.moveto, body.color2 select.moveto, body.color2 textarea.moveto {
+      border: none;
+      padding: 0; }
+  body.color2 #dock {
+    color: #063462;
+    border: #063462 2px solid;
+    border-top: none;
+    background-color: #9dd1ff; }
+    body.color2 #dock .dockedtitle {
+      border-color: #063462; }
+    body.color2 #dock .dockeditempanel_hd {
+      border-color: #063462; }
+    body.color2 #dock .dockeditempanel_content {
+      color: #063462;
+      border: #063462 2px solid;
+      background-color: #9dd1ff; }
 
 body.color3 {
   color: #a9e44d;
   background-color: #3b2716; }
   body.color3 a {
     color: #a9e44d; }
+  body.color3 input, body.color3 select, body.color3 textarea {
+    color: #a9e44d;
+    border: #a9e44d 2px solid;
+    padding: 5px;
+    background-color: #3b2716; }
+    body.color3 input.moveto, body.color3 select.moveto, body.color3 textarea.moveto {
+      border: none;
+      padding: 0; }
+  body.color3 #dock {
+    color: #a9e44d;
+    border: #a9e44d 2px solid;
+    border-top: none;
+    background-color: #3b2716; }
+    body.color3 #dock .dockedtitle {
+      border-color: #a9e44d; }
+    body.color3 #dock .dockeditempanel_hd {
+      border-color: #a9e44d; }
+    body.color3 #dock .dockeditempanel_content {
+      color: #a9e44d;
+      border: #a9e44d 2px solid;
+      background-color: #3b2716; }
 
 body {
   font-size: 13px; }
